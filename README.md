@@ -139,7 +139,8 @@
 那么在 构建之后，在 `dist/wx/static/js/common.js`中搜索 `/utils/utils.js` 可以发现这个模块是被打包到这里了，也就是说仅仅分包的资源被打包到主包里了；
 
 
-那么如何精确的
+那么如何精确的控制模块的是否被打包进 common.js 中呢？
+
 * 在项目中安装 `npm i webpack@3.12.0`
 * 更改chameleon中关于小程序端的webpack配置
 
