@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {getName } from '../components/utils/common.js'
+import subUtils from '../../utils/utils.js'
 class Index  {
   data = {
     title: "subpage",
@@ -17,8 +17,6 @@ class Index  {
   methods = {
     handleTap(){
       console.log('hadnleTap')
-      const name = getName();
-      console.log('name',name);
     }
   }
 }

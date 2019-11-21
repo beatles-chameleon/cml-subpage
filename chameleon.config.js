@@ -3,7 +3,7 @@
 const publicPath = '//www.static.chameleon.com/cml';
 // 设置api请求前缀
 const apiPrefix = 'https://api.chameleon.com';
-
+const webpack = require('webpack');
 cml.config.merge({
   templateLang: "cml",
   templateType: "html",
@@ -17,7 +17,8 @@ cml.config.merge({
     build: {
       apiPrefix,
       minimize:false,
-      moduleIdType:'name'
+      moduleIdType:'name',
+      analysis:true,
     }
   },
   web: {
@@ -29,7 +30,7 @@ cml.config.merge({
       analysis: false,
       publicPath: `${publicPath}/web/`,
       apiPrefix,
-      minimize:false,
+      // minimize:false,//这个可以分析每个资源的大小；
       moduleIdType:'name'
     }
   },
@@ -45,5 +46,23 @@ cml.config.merge({
       apiPrefix
     }
   }
+});
+
+cml.utils.plugin('webpackConfig', function(params) {
+  let { type, media, webpackConfig } = params
+  if (type === 'wx' || type === 'alipay' || type === 'baidu') {
+    let index  = webpackConfig.plugins.findIndex(item => item.constructor.name === 'CommonsChunkPlugin')
+    webpackConfig.plugins.splice(index, 1)
+    webpackConfig.plugins.push(
+      new webpack.optimize.CommonsChunkPlugin({
+        name: ['common', 'manifest'],
+        filename: 'static/js/[name].js',
+        minChunks: function(module, count){
+          return (count > 12)
+        }
+      })
+    )
+  }
+  return { type, media, webpackConfig }
 })
 
