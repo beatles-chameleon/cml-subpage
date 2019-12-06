@@ -419,9 +419,9 @@
       }
     },
     "chameleon-ui-builtin": {
-      "version": "0.2.10-alpha.4",
-      "resolved": "https://registry.npmjs.org/chameleon-ui-builtin/-/chameleon-ui-builtin-0.2.10-alpha.4.tgz",
-      "integrity": "sha512-/yFZc46cN9mZcQ/Aq1zSxmRQo0LYUoIr+lsy/qH9OIvMV7VeVZCiqPLjgN9vk4U/6817ZRtp3s++ySAz/3u0Lg==",
+      "version": "1.0.4-alpha.3",
+      "resolved": "https://registry.npmjs.org/chameleon-ui-builtin/-/chameleon-ui-builtin-1.0.4-alpha.3.tgz",
+      "integrity": "sha512-k9ZrJZH97HuY5pNcGcByCR4xeFKE0b9FBdfPYCHsyqdYEYCUbnyht1+A3Oytai6zK4XbUS4X3fU3SgzvEmdFsg==",
       "requires": {
         "chameleon-scroll": "0.0.3"
       }

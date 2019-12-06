@@ -58,7 +58,11 @@ cml.utils.plugin('webpackConfig', function(params) {
         name: ['common', 'manifest'],
         filename: 'static/js/[name].js',
         minChunks: function(module, count){
-          return (count > 12)
+          //这里写控制 模块的逻辑；根据模块的路径判断这个模块是否要打到 dist/wx/static/js/common.js
+          if(module.resource && /subpage2/.test(module.resource)){
+            return false;
+          }
+          return count >=2;
         }
       })
     )

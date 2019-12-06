@@ -9,6 +9,14 @@
 - 支持原生小程序组件的导入也是函数式的
 - 支持公用样式以文件的形式 @import,优化包体积10%左右
 
+参考老爸商城的优化前后对比
+
+优化前后体积对比如下
+
+| 优化前                                                       | 优化后                                                       |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <img src="https://static.didialift.com/pinche/gift/resource/sub-before-3d0bb5fe2ffeaecc1ec878fd718c4a76.PNG" style="width:300px;height:500px" /> | <img src="https://static.didialift.com/pinche/gift/resource/sub-after-c45c453130930502573207a6b6c6e4fb.PNG" style="width:300px;height:500px" /> |
+
 ### 0 理解微信小程序分包策略
 
 比如生成的 app.json 中配置如下:
