@@ -41,7 +41,17 @@ export default new App();
       "pages":[
         "page2/page2"
       ]
-    }]
+    }],
+    "preloadRule": {
+      "pages/index/index": {
+        "network": "all",
+        "packages": ["pages/subpage"]
+      },
+      "pages/subpage/page1/page1": {
+        "network": "all",
+        "packages": ["subpage2"]
+      }
+    }
   },
   "baidu": {
     "window": {
@@ -61,7 +71,14 @@ export default new App();
         "pages":[
           "page2/page2"
         ]
-      }]
+      }
+    ],
+    "preloadRule": {
+      "pages/index/index": {
+        "network": "all",
+        "packages": ["pages/subpage"]
+      }
+    }
   },
   "alipay": {
       "window": {
@@ -78,7 +95,14 @@ export default new App();
         "pages":[
           "page2/page2"
         ]
-      }]
+      }
+    ],
+    "preloadRule": {
+      "pages/index/index": {
+        "network": "all",
+        "packages": ["pages/subpage"]
+      }
+    }
   }
 }
 </script>

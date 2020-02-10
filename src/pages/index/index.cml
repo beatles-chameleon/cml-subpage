@@ -1,72 +1,14 @@
 <template>
   <view class="page-demo">
-    <scroller
-      height = "{{-1}}"
-    >
-    www
-      <origin-input ></origin-input>
-      <view c-bind:tap="handleTap" class=''>handleTap</view>
-      <text class="title-text" >focus聚焦 web端不支持</text>
-      <view class="input-wrap">
-        <input placeholder="focus聚焦 web端不支持" focus="{{isfocus}}" c-bind:blur="bindblurevent"></input>
-      </view>
-      <text class="title-text"><text>数据绑定,value:{{inputValue}}</text></text>
-      <view class="input-wrap">
-        <input placeholder="数据绑定" value="{{inputValue}}" c-bind:input="inputEvent"></input>
-      </view>
-      <text class="title-text"><text>监听input事件,当前事件：{{eventName}}</text></text>
-      <view class="input-wrap">
-        <input placeholder="监听input事件"  c-bind:input="testEvent" c-bind:blur="testEvent" c-bind:focus="testEvent" c-bind:confirm="testEvent"></input>
-      </view>
-      <text class="title-text">最大长度是5</text>
-      <view class="input-wrap">
-        <input placeholder="最大长度是5" maxlength="{{5}}"></input>
-      </view>
-      <text class="title-text">text类型的input</text>
-      <view class="input-wrap">
-        <input placeholder="text类型的input" type="text"></input>
-      </view>
-      <text class="title-text">number类型的input</text>
-      <view class="input-wrap">
-        <input placeholder="number类型的input" type="number"></input>
-      </view>
-      <text class="title-text">password类型的input</text>
-      <view class="input-wrap">
-        <input placeholder="password类型的input" type="password"></input>
-      </view>
-      <text class="title-text">禁用input</text>
-      <view class="input-wrap">
-        <input placeholder="禁用input" disabled="{{true}}"></input>
-      </view>
-      <text class="title-text">键盘右下键按钮done web端不支持</text>
-      <view class="input-wrap">
-        <input placeholder="键盘右下键按钮done web端不支持" return-key-type="done"></input>
-      </view>
-      <text class="title-text">键盘右下键按钮search web端不支持</text>
-      <view class="input-wrap">
-        <input placeholder="键盘右下键按钮search web端不支持" return-key-type="search"></input>
-      </view>
-      <text class="title-text">键盘右下键按钮next web端不支持</text>
-      <view class="input-wrap">
-        <input placeholder="键盘右下键按钮next web端不支持" return-key-type="next"></input>
-      </view>
-      <text class="title-text">键盘右下键按钮go web端不支持</text>
-      <view class="input-wrap">
-        <input placeholder="键盘右下键按钮go web端不支持" return-key-type="go"></input>
-      </view>
-      <text class="title-text">placeholderColor web端不支持</text>
-      <view class="input-wrap">
-        <input placeholder="placeholderColor web端不支持" placer-holder-color="#ff0000;"></input>
-      </view>
-      <text class="title-text">自定义样式</text>
-      <view class="end-item">
-        <input placeholder="自定义样式" cstyle="color: #00ff00; border: 1px solid #00f;" ></input>
-      </view>
-    </scroller>
+    <view c-bind:tap="handleTap('/subpage2/page2/page2')">/subpage2/page2/page2</view>
+    <view c-bind:tap="handleTap('/pages/subpage/page1/page1')">pages/subpage/page1/page1</view>
+    <view>这个跳转会预加载 subpage2 这个分包</view>
   </view>
 </template>
 
 <script>
+import cml from 'chameleon-api'
+import store from '../../store/index.js'
 class Input {
   data = {
     isfocus: false,
@@ -87,8 +29,10 @@ class Input {
       console.log('blur')
       this.isfocus = false;
     },
-    handleTap(...args){
-      console.log('handleTap',args)
+    handleTap(path){
+      cml.navigateTo({
+        path
+      })
     }
   }
   mounted(res) {

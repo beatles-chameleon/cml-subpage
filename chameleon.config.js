@@ -18,7 +18,6 @@ cml.config.merge({
       apiPrefix,
       minimize:false,
       moduleIdType:'name',
-      analysis:true,
     }
   },
   web: {

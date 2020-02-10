@@ -176,4 +176,41 @@ cml.utils.plugin('webpackConfig', function(params) {
 })
 ```
 
+### 3 分包预加载
 
+具体参考 [分包预加载](https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages/preload.html)
+
+
+```json
+{
+  "wx": {
+    "window": {
+      "backgroundTextStyle":"light",
+      "navigationBarBackgroundColor": "#fff",
+      "navigationBarTitleText": "Chameleon",
+      "navigationBarTextStyle":"black"
+    },
+    "subPackages":[{
+      "root":"pages/subpage",
+      "pages":[
+        "page1/page1"
+      ]
+    },
+    {
+      "root":"subpage2",
+      "pages":[
+        "page2/page2"
+      ]
+    }],
+    "preloadRule": {
+      "pages/index/index": { // 进入pages/index/index 这个页面会预加载 pages/subpage 这个分包资源
+        "network": "all",
+        "packages": ["pages/subpage"]
+      },
+      "pages/subpage/page1/page1": { //进入 /pages/subpage/page1/page1 这个页面会加载 subpage2 这个分包资源
+        "network": "all",
+        "packages": ["subpage2"]
+      }
+    }
+  },
+```
