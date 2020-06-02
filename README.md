@@ -1,5 +1,52 @@
 ## chameleon包体积优化
 
+## 重复包引用优化
+
+可能我们在开发过程中不经意间会引用了同一个npm包的不同版本，导致包体积变大
+
+第一步：分析构建后结果
+
+chameleon.config.js中配置 analysis, Boolean 类型。
+
+控制是否  打开 webpack 打包分析工具， 内部使用的webpack-bundle-analyzer插件。
+
+例如：
+```
+cml.config.merge({
+  web: {
+    dev: {
+      analysis: true,
+    },
+  },
+});
+```
+第二步：
+
+如果有重复引入的 npm 包，可以通过 `npm dedupe` 命令提取公用包
+
+[npm dedupe](https://docs.npmjs.com/cli/dedupe)
+
+具体效果如下：
+
+之前：
+```
+a
++-- b <-- depends on c@1.0.x
+|   `-- c@1.0.3
+`-- d <-- depends on c@~1.0.9
+    `-- c@1.0.10
+
+```
+之后
+```
+a
++-- b
++-- d
+`-- c@1.0.10
+
+```
+
+
 ## 分包加载优化
 
 **首先更新 chameleon-tool@1.0.4-alpha.1**
